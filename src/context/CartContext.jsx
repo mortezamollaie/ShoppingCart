@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const cartContext = createContext({
   items: [],
@@ -10,8 +10,10 @@ export const cartContext = createContext({
 });
 
 export function CartProvider({ children }) {
+  const [cartProducts, setCartProducts] = useState([]);
+
   const ContextValue = {
-    items: [],
+    items: cartProducts,
     getProductQuantity,
     addItemToCart,
     removeItemFromCart,
