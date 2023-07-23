@@ -43,6 +43,19 @@ export function CartProvider({ children }) {
     });
   }
 
+  function removeItemFromCart(id) {
+    const quantity = getProductQuantity(id);
+    if (quantity === 1) {
+      deleteFromCart(id);
+    } else {
+      setCartProducts(
+        cartProducts.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
+    }
+  }
+
   const ContextValue = {
     items: cartProducts,
     getProductQuantity,
