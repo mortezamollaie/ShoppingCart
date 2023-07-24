@@ -48,8 +48,7 @@ function Navbar() {
         contentClassName="card-bg"
         dir="rtl"
       >
-        <Modal.Header closeButton closeVariant="white">
-          <Modal.Title>سبد خرید</Modal.Title>
+        <Modal.Header>
           <Modal.Body>
             {productsCount > 0 ? (
               <>
@@ -61,6 +60,7 @@ function Navbar() {
                     quantity={item.quantity}
                   ></CartProduct>
                 ))}
+                <h3>مجموع قیمت: {cart.getTotalAmount()} تومان</h3>
               </>
             ) : (
               <h3>سبد خرید خالی است</h3>
