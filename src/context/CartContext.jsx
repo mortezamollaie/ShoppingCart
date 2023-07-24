@@ -37,11 +37,11 @@ export function CartProvider({ children }) {
   }
 
   function deleteFromCart(id) {
-    setCartProducts((cartProducts) => {
+    setCartProducts((cartProducts) =>
       cartProducts.filter((item) => {
         return item.id != id;
-      });
-    });
+      })
+    );
   }
 
   function removeItemFromCart(id) {

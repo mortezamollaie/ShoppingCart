@@ -48,6 +48,13 @@ function ProductItem({ product }) {
                 </Button>
               </Col>
             </Form>
+            <Button
+              onClick={() => cart.deleteFromCart(product.id)}
+              className="my-4"
+              variant="btn btn-light"
+            >
+              حذف از سبد خرید
+            </Button>
           </>
         ) : (
           <Button
