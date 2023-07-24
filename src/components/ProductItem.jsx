@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
 
-import { cartContext } from "../context/CartContext";
+import { CartContext } from "../context/CartContext";
 
 function ProductItem({ product }) {
-  const cart = useContext(cartContext);
+  const cart = useContext(CartContext);
 
   return (
     <Card className="mt-5 card-bg">
