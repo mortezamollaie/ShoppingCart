@@ -53,8 +53,7 @@ function getProductData(id) {
   let productData = productList.find((item) => {
     item.id === id;
   });
-
-  return productData;
+  return productList[id - 1];
 }
 
 export { productList, getProductData };

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import CartProduct from "./CartProduct";
 
 import {
   Navbar as NavbarBs,
@@ -10,6 +12,13 @@ import { BsCart } from "react-icons/bs";
 
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
+
+  const cart = useContext(CartContext);
+
+  const productsCount = cart.items.reduce(
+    (sum, product) => sum + product.quantity,
+    0
+  );
 
   const handleShow = () => {
     setShowModal(true);
@@ -28,7 +37,7 @@ function Navbar() {
             variant="btn btn-outline-secondary"
             className="text-white"
           >
-            <BsCart className="mx-2"></BsCart>
+            ({productsCount}) <BsCart className="mx-2"></BsCart>
             سبد خرید
           </Button>
         </NavbarBs.Collapse>
@@ -41,7 +50,29 @@ function Navbar() {
       >
         <Modal.Header closeButton closeVariant="white">
           <Modal.Title>سبد خرید</Modal.Title>
-          <Modal.Body>محصول</Modal.Body>
+          <Modal.Body>
+            {productsCount > 0 ? (
+              <>
+                <h3 className="mb-4">سبد خرید</h3>
+                {cart.items.map((item) => (
+                  <CartProduct
+                    key={item.id}
+                    id={item.id}
+                    quantity={item.quantity}
+                  ></CartProduct>
+                ))}
+              </>
+            ) : (
+              <h3>سبد خرید خالی است</h3>
+            )}
+            <Button
+              onClick={handleClose}
+              variant="btn btn-outline-variant"
+              className="mt-4 mx-3 text-white"
+            >
+              بستن
+            </Button>
+          </Modal.Body>
         </Modal.Header>
       </Modal>
     </>
