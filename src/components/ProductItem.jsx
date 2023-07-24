@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
 
+import { cartContext } from "../context/CartContext";
+
 function ProductItem({ product }) {
+  const cart = useContext(cartContext);
+
   return (
     <Card className="mt-5 card-bg">
       <Card.Body>
@@ -16,7 +21,11 @@ function ProductItem({ product }) {
         <Card.Text align="right" className="text-light">
           {product.price}
         </Card.Text>
-        <Button variant="btn btn-outline-secondary" className="text-white">
+        <Button
+          onClick={() => cart.addItemToCart(product.id)}
+          variant="btn btn-outline-secondary"
+          className="text-white"
+        >
           افزودن به سبد خرید
         </Button>
       </Card.Body>
