@@ -9,6 +9,7 @@ import {
   ModalHeader,
 } from "react-bootstrap";
 import { BsCart } from "react-icons/bs";
+import "../index.css";
 
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
@@ -30,15 +31,49 @@ function Navbar() {
 
   return (
     <>
-      <NavbarBs className="border-bottom border-secondary">
+      <h1 className="main-nav__title">فروشگاه همراه دیجیتال</h1>
+      <p className="main-nav__title">
+        محصولات دیجیتال را ارزان ، سریع و مطمئن از ما بخواهید
+      </p>
+      <NavbarBs className="border-secondary main-nav">
+        <Button
+          onClick={handleShow}
+          variant="btn btn-outline-secondary"
+          className="text-white main-nav__item"
+        >
+          ({productsCount}) <BsCart className="mx-2"></BsCart>
+          سبد خرید
+        </Button>
         <NavbarBs.Collapse className="justify-content-end">
           <Button
-            onClick={handleShow}
             variant="btn btn-outline-secondary"
-            className="text-white"
+            className="text-white main-nav__item"
           >
-            ({productsCount}) <BsCart className="mx-2"></BsCart>
-            سبد خرید
+            حساب کاربری
+          </Button>
+          <Button
+            variant="btn btn-outline-secondary"
+            className="text-white main-nav__item"
+          >
+            فروش اقساطی
+          </Button>
+          <Button
+            variant="btn btn-outline-secondary"
+            className="text-white main-nav__item"
+          >
+            جشنواره تابستانه
+          </Button>
+          <Button
+            variant="btn btn-outline-secondary"
+            className="text-white main-nav__item"
+          >
+            فروش ویژه
+          </Button>
+          <Button
+            variant="btn btn-outline-secondary"
+            className="text-white main-nav__item"
+          >
+            صفحه اصلی
           </Button>
         </NavbarBs.Collapse>
       </NavbarBs>
